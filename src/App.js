@@ -8,6 +8,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import About from './About.js';
 
 class App extends React.Component {
   render() {
@@ -15,13 +16,18 @@ class App extends React.Component {
       <>
         <Router>
           <Header />
-          <Routes>
+          <Routes
+          class="route">
             <Route 
-              exact path="/"
-              element={<BestBooks />}
-            >
-            </Route>
-            {/* PLACEHOLDER: add a route with a path of '/about' that renders the `About` component */}
+            path='/'
+            element={<BestBooks />}
+            ></Route>
+
+            <Route
+              /* PLACEHOLDER: add a route with a path of '/about' that renders the `About` component */
+             path="/about"
+             element={<About />}
+            ></Route>
           </Routes>
           <Footer />
         </Router>
@@ -31,3 +37,8 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+// TODO: Use React Router to add ability for user to navigate between Home and About "pages".
+
+// TODO: Add an About page at path `/about` that displays the project developer's information.

@@ -22,11 +22,9 @@ class BestBooks extends React.Component {
     this.setState({ books: response.data });
   }
 
-  /* TODO: Make a GET request to your API to fetch all the books from the database  */
 
   render() {
 
-    /* TODO: render all the books in a Carousel */
 
     return (
       <>
