@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 import Bookshelf from './Bookshelf';
+import AddBook from './AddBook';
+import Button from 'react-bootstrap/Button';
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -22,6 +24,8 @@ class BestBooks extends React.Component {
     this.setState({ books: response.data });
   }
 
+  showForm = () => this.setState({ showNewBookForm : true });
+// TODO: add showNewBookForm to state
 
   render() {
 
@@ -37,6 +41,8 @@ class BestBooks extends React.Component {
         ) : (
           <h3>No Books Found :(</h3>
         )}
+        <Button onClick={this.showForm}>Add a book!</Button>
+
       </>
     )
   }
