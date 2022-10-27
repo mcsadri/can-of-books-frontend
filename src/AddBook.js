@@ -23,7 +23,7 @@ class AddBook extends React.Component {
       <Container>
 
         <Form onSubmit={this.onSubmit}>
-          TODO: define onSubmit
+
         <Form.Group controlId='formTitle'>
           <Form.Label>Book Title</Form.Label>
           <Form.Control

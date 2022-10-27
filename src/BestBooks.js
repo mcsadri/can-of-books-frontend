@@ -9,7 +9,9 @@ class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      showNewBookForm: false,
+      errorMessage: ''
     }
   }
 
@@ -24,8 +26,26 @@ class BestBooks extends React.Component {
     this.setState({ books: response.data });
   }
 
+  handleCreateBook = async (newBook) => {
+    try {
+      const config = {
+        method: 'post',
+        baseURL: 'http://localhost:3001',
+        url: '/books',
+        data: newBook
+      }
+      const response = await axios(config);
+      this.setState({books: [...this.state.books, response.data]});
+      this.setState({errorMessage: ''});
+    }
+    catch (error) {
+      console.error('There\'s an error in BestBook.js newBook(): ', error)
+      this.setState({errorMessage: `Status code ${error.response.status}: ${error.response.data}. `})
+      console.error(this.errorMessage);    
+    }
+  }
+
   showForm = () => this.setState({ showNewBookForm : true });
-// TODO: add showNewBookForm to state
 
   render() {
 
@@ -41,7 +61,10 @@ class BestBooks extends React.Component {
         ) : (
           <h3>No Books Found :(</h3>
         )}
+
         <Button onClick={this.showForm}>Add a book!</Button>
+
+        {this.state.showNewBookForm && <AddBook handleCreateBook={this.handleCreateBook}/>}
 
       </>
     )
