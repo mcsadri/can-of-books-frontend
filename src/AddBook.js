@@ -19,56 +19,56 @@ class AddBook extends React.Component {
 
   }
   render() {
-    return(
+    return (
       <Container>
 
         <Form onSubmit={this.onSubmit}>
 
-        <Form.Group controlId='formTitle'>
-          <Form.Label>Book Title</Form.Label>
-          <Form.Control
-          type='text'
-          placeholder='Book title here'
-          />
-        </Form.Group>
+          <Form.Group controlId='formTitle'>
+            <Form.Label>Book Title</Form.Label>
+            <Form.Control
+              type='text'
+              placeholder='Book title here'
+            />
+          </Form.Group>
 
-        <Form.Group controlId='formDesc'>
-          <Form.Label>Author</Form.Label>
-          <Form.Control
-          type='text'
-          placeholder='Author of the book'
-          />
-        </Form.Group>
+          <Form.Group controlId='formDesc'>
+            <Form.Label>Author</Form.Label>
+            <Form.Control
+              type='text'
+              placeholder='Author of the book'
+            />
+          </Form.Group>
 
-        <Form.Group controlId='formStatus'>
-          <Form.Label>Status</Form.Label>
-          <Form.Control
-          type='text'
-          placeholder='Where\s the book?'
-          />
-        </Form.Group>
+          <Form.Group controlId='formStatus'>
+            <Form.Label>Status</Form.Label>
+            <Form.Control
+              type='text'
+              placeholder='Where\s the book?'
+            />
+          </Form.Group>
 
-        <Form.Check
-        type="checkbox"
-        label="Favorite or nah?"
-        />
-
-        <Form.Group controlId='formYearReleased'>
-          <Form.Label>Release Date</Form.Label>
-          <Form.Control
-          type= 'number'
-          placeholder='Year book was released'
+          <Form.Check
+            type="checkbox"
+            label="Favorite or nah?"
           />
-        </Form.Group>
 
-        <Form.Group controlId='formImage'>
-          <Form.Label>Book pic</Form.Label>
-          <Form.Control
-          type= 'text'
-          placeholder='Link to book pic'
-          />
-        </Form.Group>
-        <Button type="submit">Create book</Button>
+          <Form.Group controlId='formYearReleased'>
+            <Form.Label>Release Date</Form.Label>
+            <Form.Control
+              type='number'
+              placeholder='Year book was released'
+            />
+          </Form.Group>
+
+          <Form.Group controlId='formImage'>
+            <Form.Label>Book pic</Form.Label>
+            <Form.Control
+              type='text'
+              placeholder='Link to book pic'
+            />
+          </Form.Group>
+          <Button type="submit">Create book</Button>
         </Form>
 
       </Container>

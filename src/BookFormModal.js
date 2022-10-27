@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form';
+import AddBook from './AddBook';
 
 class BookFormModal extends React.Component {
   render() {
@@ -13,13 +13,23 @@ class BookFormModal extends React.Component {
           <Modal.Title>{this.props.selectedBeast.title}</Modal.Title>
         </Modal.Header>
 
-        <Modal.Body>{this.props.selectedBeast.description}</Modal.Body>
+        <Modal.Body>
+
+          <AddBook></AddBook>
+
+
+        </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.handleClose}>
             Close
           </Button>
         </Modal.Footer>
       </Modal>
+
+
+
+
+
 
 
 

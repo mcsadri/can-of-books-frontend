@@ -2,8 +2,9 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 import Bookshelf from './Bookshelf';
-import AddBook from './AddBook';
+// import AddBook from './AddBook';
 import Button from 'react-bootstrap/Button';
+import BookFormModal from './BookFormModal';
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class BestBooks extends React.Component {
     this.state = {
       books: [],
       showNewBookForm: false,
-      errorMessage: ''
+      errorMessage: '',
+      showModal: false
     }
   }
 
@@ -45,7 +47,15 @@ class BestBooks extends React.Component {
     }
   }
 
-  showForm = () => this.setState({ showNewBookForm : true });
+  // showForm = () => this.setState({ showNewBookForm : true });
+
+  handleOpenModal = (event) =>{
+    this.setState({showModal: true});
+  }
+
+  handleCloseModal = (event) =>{
+    this.setState({showModal: false});
+  }
 
   render() {
 
@@ -64,7 +74,7 @@ class BestBooks extends React.Component {
 
         <Button onClick={this.showForm}>Add a book!</Button>
 
-        {this.state.showNewBookForm && <AddBook handleCreateBook={this.handleCreateBook}/>}
+        {this.state.showNewBookForm && <BookFormModal handleCreateBook={this.handleCreateBook}/>}
 
       </>
     )
