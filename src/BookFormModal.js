@@ -8,31 +8,22 @@ class BookFormModal extends React.Component {
     return (
 
 
-      <Modal show={this.props.show} onHide={this.props.handleClose}>
+      <Modal show={this.props.showModal} onHide={this.props.handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>{this.props.selectedBeast.title}</Modal.Title>
+          <Modal.Title>Add New Book Information</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
 
-          <AddBook></AddBook>
-
+          <AddBook handleCreateBook={this.props.handleCreateBook}></AddBook>
 
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.handleClose}>
+          <Button onClick={this.props.handleCloseModal}>
             Close
           </Button>
         </Modal.Footer>
       </Modal>
-
-
-
-
-
-
-
-
     )
   }
 }

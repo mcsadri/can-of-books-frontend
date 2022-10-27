@@ -10,7 +10,7 @@ class Bookshelf extends React.Component {
             <img
               className="d-block w-100"
               src={book.image}
-              alt="First slide"
+              alt={book.title}
             />
             <Carousel.Caption>
               <h2>{book.title}</h2>

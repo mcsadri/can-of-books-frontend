@@ -11,12 +11,13 @@ class AddBook extends React.Component {
       title: event.target.formTitle.value,
       description: event.target.formDesc.value,
       status: event.target.formStatus.value,
-      favorite: event.target.formFav.value,
+      favorite: event.target.formFav.checked,
       yearReleased: event.target.formYearReleased.value,
       image: event.target.formImage.value
     }
     console.log(`Here's your new book!: `, newBook);
-
+    this.props.handleCreateBook(newBook);
+    
   }
   render() {
     return (
@@ -48,10 +49,12 @@ class AddBook extends React.Component {
             />
           </Form.Group>
 
+          <Form.Group controlId='formFav'>
           <Form.Check
             type="checkbox"
             label="Favorite or nah?"
           />
+          </Form.Group>
 
           <Form.Group controlId='formYearReleased'>
             <Form.Label>Release Date</Form.Label>

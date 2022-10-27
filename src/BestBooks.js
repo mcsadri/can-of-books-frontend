@@ -11,9 +11,10 @@ class BestBooks extends React.Component {
     super(props);
     this.state = {
       books: [],
-      showNewBookForm: false,
+      // showNewBookForm: false,
       errorMessage: '',
-      showModal: false
+      showModal: false,
+      newBook: {}
     }
   }
 
@@ -39,11 +40,14 @@ class BestBooks extends React.Component {
       const response = await axios(config);
       this.setState({books: [...this.state.books, response.data]});
       this.setState({errorMessage: ''});
+      console.log('Flag in handleCreateBook try.')
     }
     catch (error) {
       console.error('There\'s an error in BestBook.js newBook(): ', error)
       this.setState({errorMessage: `Status code ${error.response.status}: ${error.response.data}. `})
       console.error(this.errorMessage);    
+      console.log('Flag in handleCreateBook catch.')
+
     }
   }
 
@@ -62,7 +66,7 @@ class BestBooks extends React.Component {
 
     return (
       <>
-        <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
+        <h2>Books I Will Never Read</h2>
 
         {this.state.books.length > 0 ? (
           <Bookshelf
@@ -72,11 +76,16 @@ class BestBooks extends React.Component {
           <h3>No Books Found :(</h3>
         )}
 
-        <Button onClick={this.showForm}>Add a book!</Button>
+        <Button onClick={this.handleOpenModal}>Add a book!</Button>
 
-        {this.state.showNewBookForm && <BookFormModal handleCreateBook={this.handleCreateBook}/>}
+        {this.state.showModal && 
+        <BookFormModal 
+          handleCreateBook={this.handleCreateBook}
+          handleCloseModal={this.handleCloseModal}
+          showModal={this.state.showModal}
+        />}
 
-      </>
+    </>
     )
   }
 }
