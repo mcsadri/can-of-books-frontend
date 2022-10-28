@@ -11,7 +11,6 @@ class BestBooks extends React.Component {
     super(props);
     this.state = {
       books: [],
-      // showNewBookForm: false,
       errorMessage: '',
       showModal: false,
       newBook: {}
@@ -51,6 +50,29 @@ class BestBooks extends React.Component {
     }
   }
 
+  handleDeleteBook = async (bookToBeDeleted) => {
+    try {
+      const proceed = window.confirm(`Are you sure you want to delete ${bookToBeDeleted.title}?`);
+     
+      if (proceed) {
+        const config = {
+          method: 'delete',
+          baseURL: 'http://localhost:3001',
+          url: `/books/${bookToBeDeleted._id}`,
+        }
+        const response = await axios(config);
+        console.log(response.data);
+        const newBooksArr = this.state.books.filter(book => book._id !== bookToBeDeleted._id);
+        this.setState({books: newBooksArr});
+      }
+    } catch (error) {
+      console.error('There\'s an error in BestBook.js handleDeleteBook(): ', error)
+      this.setState({errorMessage: `Status code ${error.response.status}: ${error.response.data}. `})
+      console.error(this.errorMessage);    
+      console.log('Flag in handleDeleteBook catch.');
+    }
+  }
+
   // showForm = () => this.setState({ showNewBookForm : true });
 
   handleOpenModal = (event) =>{
@@ -71,6 +93,7 @@ class BestBooks extends React.Component {
         {this.state.books.length > 0 ? (
           <Bookshelf
             books={this.state.books}
+            handleDeleteBook={this.handleDeleteBook}
           />
         ) : (
           <h3>No Books Found :(</h3>
