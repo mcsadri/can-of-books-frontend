@@ -20,7 +20,7 @@ class BestBooks extends React.Component {
   componentDidMount = async () => {
     const config = {
       method: 'get', // get is the default
-      baseURL: 'http://localhost:3001',
+      baseURL: process.env.REACT_APP_SERVER,
       url: '/books' // endpoint
     }
     const response = await axios(config);
@@ -32,7 +32,7 @@ class BestBooks extends React.Component {
     try {
       const config = {
         method: 'post',
-        baseURL: 'http://localhost:3001',
+        baseURL: process.env.REACT_APP_SERVER,
         url: '/books',
         data: newBook
       }
@@ -57,7 +57,7 @@ class BestBooks extends React.Component {
       if (proceed) {
         const config = {
           method: 'delete',
-          baseURL: 'http://localhost:3001',
+          baseURL: process.env.REACT_APP_SERVER,
           url: `/books/${bookToBeDeleted._id}`,
         }
         const response = await axios(config);
