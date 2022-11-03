@@ -5,8 +5,8 @@ import Bookshelf from './Bookshelf';
 // import AddBook from './AddBook';
 import Button from 'react-bootstrap/Button';
 import BookFormModal from './BookFormModal';
+import UpdateFormModal from './UpdateFormModal';
 
-// TODO: Add a form in the front end to let the user edit an existing book's details. When the form is submitted, send the new data to the server, and update the page according to the response. 
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -83,6 +83,7 @@ class BestBooks extends React.Component {
         method: 'put',
         baseURL: process.env.REACT_APP_SERVER,
         url: `/books/${bookToBeUpdated._id}`,
+        data: bookToBeUpdated
       }
       const response = await axios(config);
       console.log(response.data);
@@ -114,9 +115,12 @@ class BestBooks extends React.Component {
     this.setState({ showModal: false });
   }
 
-  handleSelectBook = (bookToBeSelected) => this.setState({ selectedBook: bookToBeSelected });
+  handleSelectBook = (bookToBeSelected) => {
+    this.setState({ selectedBook: bookToBeSelected, showUpdate: true });
+    console.log('You found handleSelectBook!');
+  };
 
-  handleOnHide = () => this.setState({ selectedBook: {}, show: false });
+  handleOnHide = () => this.setState({ selectedBook: {}, showUpdate: false });
 
   render() {
 
@@ -129,6 +133,7 @@ class BestBooks extends React.Component {
           <Bookshelf
             books={this.state.books}
             handleDeleteBook={this.handleDeleteBook}
+            handleSelectBook={this.handleSelectBook}
           />
         ) : (
           <h3>No Books Found :(</h3>
@@ -144,6 +149,13 @@ class BestBooks extends React.Component {
             handleCreateBook={this.handleCreateBook}
             handleCloseModal={this.handleCloseModal}
             showModal={this.state.showModal}
+            handleUpdateBook={this.handleUpdateBook}
+          />}
+          {this.state.showUpdate &&
+          <UpdateFormModal
+            handleOnHide={this.handleOnHide}
+            showUpdate={this.state.showUpdate}
+            selectedBook={this.state.selectedBook}
             handleUpdateBook={this.handleUpdateBook}
           />}
 

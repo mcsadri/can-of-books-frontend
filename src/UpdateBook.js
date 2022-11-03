@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Container, Modal, Button } from 'react-bootstrap';
+import { Form, Container, Button } from 'react-bootstrap';
 
 
 class UpdateBook extends React.Component {
@@ -40,11 +40,6 @@ class UpdateBook extends React.Component {
   render() {
     return (
       <>
-        <Modal show={this.props.showUpdate} onHide={this.props.handleOnHide}>
-          <Modal.Header closeButton >
-            <Modal.Title>Update a Book</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
           <Container>
             <Form onSubmit={this.handleSubmit}>
               <Form.Group>
@@ -104,8 +99,6 @@ class UpdateBook extends React.Component {
               <Button type='submit'>Submit!</Button>
             </Form>
             </Container>
-          </Modal.Body>
-        </Modal>
       </>
     )
   }
