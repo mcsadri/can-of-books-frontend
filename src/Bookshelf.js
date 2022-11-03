@@ -20,6 +20,7 @@ class Bookshelf extends React.Component {
               <p>{book.favorite}</p><br />
               <p>{book.yearReleased}</p><br />
               <Button onClick={() => this.props.handleDeleteBook(book)}>Delete this book</Button>
+              <Button onClick={() => this.props.handleSelectBook(book)}>Update information about this book</Button>
             </Carousel.Caption>
           </Carousel.Item>
         ))}

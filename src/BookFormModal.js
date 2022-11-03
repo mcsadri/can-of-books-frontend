@@ -2,6 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import AddBook from './AddBook';
+// import UpdateBook from './UpdateBook';
 
 class BookFormModal extends React.Component {
   render() {
@@ -16,6 +17,12 @@ class BookFormModal extends React.Component {
         <Modal.Body>
 
           <AddBook handleCreateBook={this.props.handleCreateBook}></AddBook>
+
+          {/* <UpdateBook 
+          handleOnHide={this.props.handleOnHide}
+          selectedBook={this.props.selectedBook} 
+          showUpdate={this.props.showUpdate}
+          /> */}
 
         </Modal.Body>
         <Modal.Footer>
