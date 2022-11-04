@@ -43,7 +43,8 @@ class BestBooks extends React.Component {
       const response = await axios(config);
       this.setState({ books: [...this.state.books, response.data] });
       this.setState({ errorMessage: '' });
-      console.log('Flag in handleCreateBook try.')
+      console.log('Flag in handleCreateBook try.');
+      this.setState({ showModal: false });
     }
     catch (error) {
       console.error('There\'s an error in BestBook.js newBook(): ', error)

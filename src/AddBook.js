@@ -7,13 +7,14 @@ class AddBook extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault();
+    const defaultImage = 'https://images.unsplash.com/photo-1502078534399-8190479363f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80';
     const newBook = {
       title: event.target.formTitle.value,
       description: event.target.formDesc.value,
       status: event.target.formStatus.value,
       favorite: event.target.formFav.checked,
       yearReleased: event.target.formYearReleased.value,
-      image: event.target.formImage.value
+      image: event.target.formImage.value.length > 0 ? event.target.formImage.value : defaultImage
     }
     console.log(`Here's your new book!: `, newBook);
     this.props.handleCreateBook(newBook);
@@ -28,6 +29,7 @@ class AddBook extends React.Component {
           <Form.Group controlId='formTitle'>
             <Form.Label>Book Title</Form.Label>
             <Form.Control
+              required
               type='text'
               placeholder='Book title here'
             />
@@ -68,7 +70,7 @@ class AddBook extends React.Component {
             <Form.Label>Book pic</Form.Label>
             <Form.Control
               type='text'
-              placeholder='Link to book pic'
+              placeholder='enter a valid URL for a book image'
             />
           </Form.Group>
           <Button type="submit">Create book</Button>
