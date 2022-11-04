@@ -18,12 +18,6 @@ class BookFormModal extends React.Component {
 
           <AddBook handleCreateBook={this.props.handleCreateBook}></AddBook>
 
-          {/* <UpdateBook 
-          handleOnHide={this.props.handleOnHide}
-          selectedBook={this.props.selectedBook} 
-          showUpdate={this.props.showUpdate}
-          /> */}
-
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.handleCloseModal}>
