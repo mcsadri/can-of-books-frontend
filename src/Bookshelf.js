@@ -9,7 +9,7 @@ class Bookshelf extends React.Component {
         {this.props.books.map(book => (
           <Carousel.Item key={book._id}>
             <img
-              className="d-block w-100"
+              className="d-block w-75"
               src={book.image}
               alt={book.title}
             />
