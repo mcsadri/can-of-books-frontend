@@ -14,14 +14,15 @@ class AddBook extends React.Component {
       status: event.target.formStatus.value,
       favorite: event.target.formFav.checked,
       yearReleased: event.target.formYearReleased.value,
-      image: event.target.formImage.value.length > 0 ? event.target.formImage.value : defaultImage
+      image: event.target.formImage.value.length > 0 ? event.target.formImage.value : defaultImage // very lame error handling for URL input validation 
     }
     console.log(`Here's your new book!: `, newBook);
     this.props.handleCreateBook(newBook);
-    
+
   }
   render() {
     return (
+
       <Container>
 
         <Form onSubmit={this.onSubmit}>
@@ -52,10 +53,11 @@ class AddBook extends React.Component {
           </Form.Group>
 
           <Form.Group controlId='formFav'>
-          <Form.Check
-            type="checkbox"
-            label="Favorite or nah?"
-          />
+          <Form.Label>Favorite?</Form.Label>
+            <Form.Check
+              type="checkbox"
+              label="✓ for yes"
+            />
           </Form.Group>
 
           <Form.Group controlId='formYearReleased'>
