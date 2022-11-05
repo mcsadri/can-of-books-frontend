@@ -14,8 +14,9 @@ class AddBook extends React.Component {
       status: event.target.formStatus.value,
       favorite: event.target.formFav.checked,
       yearReleased: event.target.formYearReleased.value,
-      image: event.target.formImage.value.length > 0 ? event.target.formImage.value : defaultImage // very lame error handling for URL input validation 
+      image: event.target.formImage.value.length > 0 ? event.target.formImage.value : defaultImage // very lame error handling for URL input validation
     }
+  
     console.log(`Here's your new book!: `, newBook);
     this.props.handleCreateBook(newBook);
 
@@ -75,8 +76,12 @@ class AddBook extends React.Component {
               placeholder='enter a valid URL for a book image'
             />
           </Form.Group>
+
           <Button type="submit">Create book</Button>
+        
         </Form>
+
+
 
       </Container>
 
