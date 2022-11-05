@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 class Bookshelf extends React.Component {
   render() {
     return (
-      <div class="carouselDiv">
+      <div className="carouselDiv">
         <Carousel>
           {this.props.books.map(book => (
             <Carousel.Item key={book._id}>
